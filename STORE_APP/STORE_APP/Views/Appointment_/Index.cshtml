@@ -1,0 +1,51 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+@using STORE_APP.Models.Entity
+<h2><strong>Appointment</strong></h2>
+
+@* ActionResult  Controller  *@
+@*@using (Html.BeginForm("Index", "Employees_", FormMethod.Get))
+    {
+        <div style="margin-top;15px; margin-bottom:15px;">
+            <b>Aranacak İSMİ girin: &nbsp</b>@Html.TextBox("p")
+            <input type="submit" value="Ara"
+        </div>
+    }*@
+<table class="table table-bordered">
+    <tr>
+        @* Create Table *@
+        <th>Appointment Id</th>
+        <th>Customer Id</th>
+        <th>Rotation</th>
+        <th>Date</th>
+        <th>Clock</th>
+        <th>Car Category Id</th>
+        <th>Activity</th>
+        <th>C_DATE</th>
+        <th>U_DATE</th>
+        <th>Delete</th>
+        <th>Update</th>
+    </tr>
+    @* Get Date *@
+    @foreach (var appointment in Model)
+    {
+        <tr>
+            @* Get Date For Table *@
+            <td>@appointment.APPOINTMENT_ID</td>
+            <td>@appointment.CUSTOMERS.NAME @appointment.CUSTOMERS.SURNAME</td>
+            <td>@appointment.ROTATION</td>
+            <td>@Convert.ToDateTime(appointment.DATE).ToString("dd/MM/yyyy")</td>
+            <td>@appointment.CLOCK</td>
+            <td>@appointment.CARS_CATEGORY.CAR_CATEGORY_NAME</td>
+            <td>@appointment.IS_ACTIV</td>
+            <td>@Convert.ToDateTime(appointment.C_DATE).ToString("dd/MM/yyyy")</td>
+            <td>@Convert.ToDateTime(appointment.U_DATE).ToString("dd/MM/yyyy")</td>
+            <td>@Html.ActionLink("Delete", "Delete_Appointment", new { id = appointment.APPOINTMENT_ID }, new { @class = "btn btn-danger", onclick = "return confirm('Do you want delete this department?')" })</td>
+            <td><a href="/Appointment_/Update_Appointment_View/@appointment.APPOINTMENT_ID" class="btn btn-success">Update</a></td>
+        </tr>
+    }
+</table>
+@*<a href="/Appointment_/Add_Appointment/" class="btn btn-primary">Add New Appointment</a>*@

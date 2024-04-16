@@ -1,0 +1,45 @@
+﻿@using STORE_APP.Models.Entity;
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2><strong>Customers</strong></h2>
+
+<table class="table table-bordered">
+    <tr>
+        @* Create Table *@
+        <th>Customer Id</th>
+        <th>Name</th>
+        <th>Phone</th>
+        <th>E-Mail</th>
+        <th>Company Name</th>
+        <th>Password</th>
+        <th>Activity</th>
+        <th>C_DATE</th>
+        <th>U_DATE</th>
+        <th>Activity Button</th>
+        <th>Update</th>
+    </tr>
+    @* Get Date *@
+    @foreach (var customer in Model)
+    {
+        <tr>
+            @* Get Date For Table *@
+            <td>@customer.CUSTOMER_ID</td>
+            <td>@customer.NAME @customer.SURNAME</td>
+            <td>@customer.PHONE</td>
+            <td>@customer.EMAIL</td>
+            <td>@customer.COMPANY_NAME</td>
+            <td>@customer.PASSWORD</td>
+            <td>@customer.IS_ACTIV</td>
+            <td>@Convert.ToDateTime(customer.C_DATE).ToString("dd/MM/yyyy")</td>
+            <td>@Convert.ToDateTime(customer.U_DATE).ToString("dd/MM/yyyy")</td>
+            <td>@Html.ActionLink("Activity Button", "Delete_Customer", new { id = customer.CUSTOMER_ID , }, new { @class = "btn btn-warning", onclick = "return confirm('Do you want change activity this customer?')" })</td>
+            @*<td><a href="/Departments_/Delete_Department/@ctg.DEPARTMENT_ID" class="btn btn-danger">Delete</a></td>*@
+            <td><a href="/Customers_/Update_Customer_View/@customer.CUSTOMER_ID" class="btn btn-success">Update</a></td>
+        </tr>
+    }
+</table>
+<a href="/Customers_/Add_Customers" class="btn btn-primary">Add New Customer</a>

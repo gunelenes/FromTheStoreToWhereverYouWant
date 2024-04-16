@@ -1,0 +1,53 @@
+﻿@using STORE_APP.Models.Entity
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2><strong>Employees</strong></h2>
+
+@* ActionResult  Controller  *@
+@*@using (Html.BeginForm("Index", "Employees_", FormMethod.Get))
+    {
+        <div style="margin-top;15px; margin-bottom:15px;">
+            <b>Aranacak İSMİ girin: &nbsp</b>@Html.TextBox("p")
+            <input type="submit" value="Ara"
+        </div>
+    }*@
+<table class="table table-bordered">
+    <tr>
+        @* Create Table *@
+        <th>EMPLOYEE_ID</th>
+        <th>Name</th>
+        <th>Department Name</th>
+        <th>Birt Date</th>
+        <th>Identity Number</th>
+        <th>Activity</th>
+        <th>Password</th>
+        <th>E-Mail</th>
+        <th>C_DATE</th>
+        <th>U_DATE</th>
+        <th>Delete</th>
+        <th>Update</th>
+    </tr>
+    @* Get Date *@
+    @foreach (var employee in Model)
+    {
+        <tr>
+            @* Get Date For Table *@
+            <td>@employee.EMPLOYEE_ID</td>
+            <td>@employee.NAME  @employee.SURNAME</td>
+            <td>@employee.DEPARTMENTS.DEPARTMENT_NAME</td>
+            <td>@Convert.ToDateTime(employee.BIRT_DATE).ToString("dd/MM/yyyy")</td>
+            <td>@employee.IDENTIFY_NUMBER</td>
+            <td>@employee.IS_ACTIV</td>
+            <td>@employee.PASSWORD</td>
+            <td>@employee.EMAIL</td>
+            <td>@Convert.ToDateTime(employee.C_DATE).ToString("dd/MM/yyyy")</td>
+            <td>@Convert.ToDateTime(employee.U_DATE).ToString("dd/MM/yyyy")</td>
+            <td>@Html.ActionLink("Delete", "Delete_Employee", new { id = employee.EMPLOYEE_ID }, new { @class = "btn btn-danger", onclick = "return confirm('Do you want delete this department?')" })</td>
+            <td><a href="/Employees_/Update_Employee_View/@employee.EMPLOYEE_ID" class="btn btn-success">Update</a></td>
+        </tr>
+    }
+</table>
+<a href="/Employees_/Add_Employee/" class="btn btn-primary">Add New Employee</a>

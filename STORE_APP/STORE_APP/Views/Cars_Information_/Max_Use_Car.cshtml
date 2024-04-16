@@ -1,0 +1,30 @@
+﻿@using STORE_APP.Models.Entity;
+@{
+    ViewBag.Title = "Update_Car_Information_View";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+@*@using (Html.BeginForm("Max_Use_Car", "Cars_Information_", FormMethod.Get)) {*@
+<div style="margin-top;15px; margin-bottom:15px;">
+    <table class="table table-bordered">
+        <div style="margin-top;15px; margin-bottom:15px;" />
+        <tr>
+            @* Create Table *@
+            <th>CAR_CATEGORY_NAME </th>
+            <th>Value</th>
+        </tr>
+        @* Get Date *@
+
+        @foreach (var car in Model)
+        {
+            <tr>
+                @* Get Date For Table *@
+                <td>@car.CarCategoryName</td>
+                <td>@car.NumberOfSales</td>
+            </tr>
+        }
+    </table>
+</div>
+@*}*@

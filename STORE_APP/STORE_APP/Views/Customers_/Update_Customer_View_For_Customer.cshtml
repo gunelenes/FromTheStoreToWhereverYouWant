@@ -1,0 +1,59 @@
+﻿@model STORE_APP.Models.Entity.CUSTOMERS
+@{
+    ViewBag.Title = "Update_Customer_View_For_Customer";
+    Layout = "~/Views/Shared/Customer_Layout.cshtml";
+}
+
+<h2>Edit Profile</h2>
+
+
+@*                      ActionResult         Controller *@
+@using (Html.BeginForm("Update_Customer_For_Customer", "Customers_", FormMethod.Post))
+{
+    <div style="margin-bottom:15px"></div>
+    <div class="form-group">
+        <!-- jQuery -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+        <!-- jQuery UI (Including datepicker) -->
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        @Html.LabelFor(k => k.CUSTOMER_ID)
+       @* @Html.TextBoxFor(k => k.CUSTOMER_ID, new { @class = "form-control" })*@
+        @Html.TextBoxFor(model => model.CUSTOMER_ID, new { @class = "form-control", @id = "myInput", @disabled = "disabled", @value = "@Update_Customer_For_Customer" })
+        <br />
+        @Html.LabelFor(k => k.NAME)
+        @Html.TextBoxFor(k => k.NAME, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.NAME, "", new { @style = "color:red" })
+        <br />
+        @Html.LabelFor(k => k.SURNAME)
+        @Html.TextBoxFor(k => k.SURNAME, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.SURNAME, "", new { @style = "color:red" })
+        <br />
+        @Html.LabelFor(k => k.PHONE)
+        @Html.TextBoxFor(k => k.PHONE, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.PHONE, "", new { @style = "color:red" })
+        <br />
+        @Html.LabelFor(k => k.EMAIL)
+        @Html.TextBoxFor(k => k.EMAIL, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.EMAIL, "", new { @style = "color:red" })
+        <br />
+        @Html.LabelFor(k => k.COMPANY_NAME)
+        @Html.TextBoxFor(k => k.COMPANY_NAME, new { @class = "form-control" })
+        <br />
+        @Html.LabelFor(k => k.PASSWORD)
+        @Html.TextBoxFor(k => k.PASSWORD, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.PASSWORD, "", new { @style = "color:red" })
+        <div style="margin-top:15px">
+            <label>DATE</label>
+            <input type="text" id="datepicker" class="form-control" name="U_DATE"
+                   value="@DateTime.Now.ToShortDateString()" />
+            <script>
+                $(function () {
+                    $("#datepicker").datepicker({ dateFormat: "dd/mm/yy" });
+                });
+            </script>
+        </div>
+    </div>
+    <div><button class="btn btn-warning">Update</button></div>
+}

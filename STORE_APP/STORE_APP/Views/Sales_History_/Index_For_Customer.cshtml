@@ -1,0 +1,45 @@
+﻿@using STORE_APP.Models.Entity
+@{
+    ViewBag.Title = "Index_For_Customer";
+    Layout = "~/Views/Shared/Customer_Layout.cshtml";
+}
+
+
+<h2><strong>Sales History</strong></h2>
+
+<table class="table table-bordered">
+    <div style="margin-top;15px; margin-bottom:15px;">
+    <tr>
+        @* Create Table *@
+        <th>Sales Number</th>
+        <th>Customer Number</th>
+        <th>Car Number Plate</th>
+        <th>Employee Name</th>
+        <th>Rotation</th>
+        <th>Activity</th>
+        <th>Date</th>
+    </tr>
+    @* Get Date *@
+    @foreach (var sales_history in Model)
+    {
+        <tr>
+            @* Get Date For Table *@
+            <td>@sales_history.SALES_ID</td>
+            <td>@sales_history.CUSTOMERS.NAME @sales_history.CUSTOMERS.SURNAME</td>
+            <td>@sales_history.CARS.CAR_NUMBER_PLATE</td>
+            <td>@sales_history.EMPLOYEES.NAME @sales_history.EMPLOYEES.SURNAME</td>
+            <td>@sales_history.ROTATION</td>
+            @if (@sales_history.IS_ACTIV == 1)
+            {
+
+
+<td>True</td>
+            }
+            else
+            {
+               <td>False</td>            }
+                
+                <td>@Convert.ToDateTime(sales_history.C_DATE).ToString("dd/MM/yyyy")</td>              
+            </tr>
+    }
+</table>

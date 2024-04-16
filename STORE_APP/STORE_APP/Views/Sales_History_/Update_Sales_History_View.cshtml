@@ -1,0 +1,72 @@
+﻿@model STORE_APP.Models.Entity.SALES_HISTORY
+@{
+    ViewBag.Title = "Update_Sales_History_View";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>Update_Sales_History_View</h2>
+
+
+@*                  ActionResult        Controller *@
+@using (Html.BeginForm("Update_Sales_History", "Sales_History_", FormMethod.Post))
+{<div></div>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- jQuery UI (Including datepicker) -->
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+    <div></div>
+
+    <div style="margin-top:15px">
+        <label>Sales Id</label>
+        @Html.TextBoxFor(sales_history => sales_history.SALES_ID, new { @class = "form-control" })
+        @*@Html.ValidationMessageFor(x => x.CUSTOMER_ID, "", new { @style = "color:red" })*@
+    </div>
+    <div style="margin-top:15px">
+        <label>Customer Id</label>
+        @Html.TextBoxFor(sales_history => sales_history.CUSTOMER_ID, new { @class = "form-control" })
+        @*@Html.ValidationMessageFor(x => x.CUSTOMER_ID, "", new { @style = "color:red" })*@
+    </div>
+    <div style="margin-top:15px">
+        <label>Car Number Plate</label>
+        @Html.DropDownListFor(x => x.CARS.CAR_ID, (List<SelectListItem>)ViewBag.listCarView, new { @class = "form-control" })
+    </div>
+    @* Car Category Id *@
+    <div style="margin-top:15px">
+        <label>Employee Name</label>
+        @Html.DropDownListFor(x => x.EMPLOYEES.EMPLOYEE_ID, (List<SelectListItem>)ViewBag.listEmployeeView, new { @class = "form-control" })
+    </div>
+    <div style="margin-top:15px">
+        <label>Rotation</label>
+        @Html.TextBoxFor(sales_history => sales_history.ROTATION, new { @class = "form-control" })
+       @* @Html.ValidationMessageFor(x => x.ROTATION, "", new { @style = "color:red" })*@
+    </div>
+    @* Activity *@
+    <div style="margin-top:15px">
+        <datalist id="Activity">
+            <option value="1">
+            <option value="0">
+        </datalist>
+        <label>Activity</label>
+        <input type="text" class="form-control" name="IS_ACTIV"
+               list="Activity" />
+        @Html.ValidationMessageFor(x => x.IS_ACTIV, "", new { @style = "color:red" })
+    </div>
+
+    <div style="margin-top:15px">
+        <label>DATE</label>
+        <input type="text" id="datepicker" class="form-control" name="U_DATE"
+               value="@DateTime.Now.ToShortDateString()" />
+        <script>
+            $(function () {
+                $("#datepicker").datepicker({ dateFormat: "dd/mm/yy" });
+            });
+        </script>
+    </div>
+    @* Add Car Button *@
+    <div style="margin-top:15px">
+        <div style="margin-top:15px"><button class="btn btn-warning">Update</button></div>
+    </div>
+}

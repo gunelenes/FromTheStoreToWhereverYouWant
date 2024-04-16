@@ -1,0 +1,54 @@
+﻿@model STORE_APP.Models.Entity.CARS_CATEGORY
+@{
+    ViewBag.Title = "Add_Category";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<form class="form-group" method="post">
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- jQuery UI (Including datepicker) -->
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+
+    @* Car Category Name *@
+<div style="margin-top:15px;">
+    <label>Category Name</label>
+    @Html.TextBoxFor(x => x.CAR_CATEGORY_NAME, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.CAR_CATEGORY_NAME, "", new { @style = "color:red" })
+</div>
+    <div style="margin-top:15px;">
+        <label>Image Link</label>
+        <input type="text" class="form-control" name="CAR_IMG" />
+    </div>
+    @* Category Activity *@
+    <div style="margin-top:15px">
+        <datalist id="Activity">
+            <option value="1">
+            <option value="0">
+        </datalist>
+        <label>Activity</label>
+        <input type="text" class="form-control" name="IS_ACTIV"
+               list="Activity" />
+        @Html.ValidationMessageFor(x => x.IS_ACTIV, "", new { @style = "color:red" })
+    </div>
+    <div style="margin-top:15px">
+        <label>DATE</label>
+        <input type="text" id="datepicker" class="form-control" name="C_DATE"
+               value="@DateTime.Now.ToShortDateString()" />
+        <script>
+            $(function () {
+                $("#datepicker").datepicker({ dateFormat: "dd/mm/yy" });
+            });
+        </script>
+    </div>
+
+
+    <div style="margin-top:15px">
+        <button class=" btn btn-info" id="btn_Add">Add Category</button>
+    </div>
+</form>
+

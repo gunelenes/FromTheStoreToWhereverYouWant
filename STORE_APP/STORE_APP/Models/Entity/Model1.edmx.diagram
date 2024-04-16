@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2f98b8f62cae4b858e156e245a1bd88a" Name="Diagram1" ZoomLevel="81">
+        <EntityTypeShape EntityType="DB_STORE_APPModel.About" Width="1.5" PointX="12.25" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_STORE_APPModel.ACTIVITY" Width="1.5" PointX="12.25" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_STORE_APPModel.APPOINTMENT" Width="1.5" PointX="3.125" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_STORE_APPModel.CARS" Width="1.5" PointX="4.875" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_STORE_APPModel.CARS_CATEGORY" Width="1.5" PointX="3" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_STORE_APPModel.CARS_INFORMATION" Width="2.375" PointX="9.625" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_STORE_APPModel.CUSTOMERS" Width="1.5" PointX="1.25" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_STORE_APPModel.DEPARTMENTS" Width="1.5" PointX="7.625" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_STORE_APPModel.EMPLOYEES" Width="1.5" PointX="7.125" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_STORE_APPModel.SALES_HISTORY" Width="1.5" PointX="5.5" PointY="0.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_STORE_APPModel.sysdiagrams" Width="1.5" PointX="9.625" PointY="5.125" IsExpanded="true" />
+        <AssociationConnector Association="DB_STORE_APPModel.FK_APPOINTMENT_CARS_CATEGORY" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_STORE_APPModel.FK_APPOINTMENT_CUSTOMERS" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_STORE_APPModel.FK_CARS_CARS_CATEGORY" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_STORE_APPModel.FK_SALES_HISTORY_CARS" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_STORE_APPModel.FK_SALES_HISTORY_CUSTOMERS" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_STORE_APPModel.FK_EMPLOYEES_DEPARTMENTS" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_STORE_APPModel.FK_SALES_HISTORY_EMPLOYEES" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="DB_STORE_APPModel.Request" Width="1.5" PointX="11.25" PointY="5.125" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

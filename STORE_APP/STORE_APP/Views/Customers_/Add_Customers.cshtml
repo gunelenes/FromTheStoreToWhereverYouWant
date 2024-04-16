@@ -1,0 +1,77 @@
+﻿
+@{
+    ViewBag.Title = "Add_Customers";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+@model STORE_APP.Models.Entity.CUSTOMERS
+<form class="form-group" method="post">
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- jQuery UI (Including datepicker) -->
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+    @* Car Category Name *@
+    <div style="margin-top:15px;">
+        <label>Name</label>
+        @*<input type="text" class="form-control" name="DEPARTMENT_NAME" />*@
+        @Html.TextBoxFor(x => x.NAME, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.NAME, "", new { @style = "color:red" })
+    </div>
+    <div style="margin-top:15px;">
+        <label>Surname</label>
+        @*<input type="text" class="form-control" name="DEPARTMENT_NAME" />*@
+        @Html.TextBoxFor(x => x.SURNAME, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.SURNAME, "", new { @style = "color:red" })
+    </div>
+    <div style="margin-top:15px;">
+        <label>Phone</label>
+        @*<input type="text" class="form-control" name="DEPARTMENT_NAME" />*@
+        @Html.TextBoxFor(x => x.PHONE, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.PHONE, "", new { @style = "color:red" })
+    </div>
+    <div style="margin-top:15px;">
+        <label>E-Mail</label>
+        @*<input type="text" class="form-control" name="DEPARTMENT_NAME" />*@
+        @Html.TextBoxFor(x => x.EMAIL, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.EMAIL, "", new { @style = "color:red" })
+    </div>
+    <div style="margin-top:15px;">
+        <label>Company Name</label>
+        @*<input type="text" class="form-control" name="DEPARTMENT_NAME" />*@
+        @Html.TextBoxFor(x => x.COMPANY_NAME, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.COMPANY_NAME, "", new { @style = "color:red" })
+    </div>
+    <div style="margin-top:15px;">
+        <label>Password</label>
+        @*<input type="text" class="form-control" name="DEPARTMENT_NAME" />*@
+        @Html.TextBoxFor(x => x.PASSWORD, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.PASSWORD, "", new { @style = "color:red" })
+    </div>
+    @* Category Activity *@
+    <div style="margin-top:15px">
+        <datalist id="Activity">
+            <option value="1">
+            <option value="0">
+        </datalist>
+        <label>Activity</label>
+        <input type="text" class="form-control" name="IS_ACTIV"
+               list="Activity" />
+        @Html.ValidationMessageFor(x => x.IS_ACTIV, "", new { @style = "color:red" })
+    </div>
+    <div style="margin-top:15px">
+        <label>DATE</label>
+        <input type="text" id="datepicker" class="form-control" name="C_DATE"
+               value="@DateTime.Now.ToShortDateString()" />
+        <script>
+            $(function () {
+                $("#datepicker").datepicker({ dateFormat: "dd/mm/yy" });
+            });
+        </script>
+    </div>
+
+    <div style="margin-top:15px">
+        <button class=" btn btn-info" id="btn_Add">Add Customer</button>
+    </div>
+</form>

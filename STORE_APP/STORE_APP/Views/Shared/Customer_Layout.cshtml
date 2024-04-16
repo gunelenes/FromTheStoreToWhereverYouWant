@@ -1,0 +1,72 @@
+﻿
+@{
+    ViewBag.Title = "Layout";
+}
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<!DOCTYPE html>
+
+<html>
+<head>
+    /*
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/front-awesome/d.7.0/css/front-awesome.min.css">
+    <style>
+
+        body {
+            font-family: "Lato", sans-serif;
+        }
+
+        .sidebar {
+            height: 100%;
+            width: 200px;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #111;
+            overflow-x: hidden;
+            padding-top: 16px;
+        }
+
+            .sidebar a {
+                padding: 10px 14px 10px 10px;
+                text-decoration: none;
+                font-size: 14px;
+                color: white;
+                display: block;
+            }
+
+                .sidebar a:hover {
+                    color: blue;
+                }
+
+        .main {
+            margin-left: 200px; /* Same as the width of the sidenav*/
+            padding: 0px 10px;
+        }
+
+        @@media screen and (max-height: 450px) {
+            .sidebar {
+                padding-top: 15px;
+            }
+
+                .sidebar a {
+                    font-size: 18px;
+                }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="sidebar">
+        <a href="/Customers_/Update_Customer_View_For_Customer"><i class="glyphicon glyphicon-pencil"></i>&nbsp;Edit Profile</a>
+        <a href="/Sales_History_/Index_For_Customer"><i class="glyphicon glyphicon-search"></i>&nbsp; Sales History</a>
+        <a href="/Login/Index"><i class="glyphicon glyphicon-remove-sign"></i>&nbsp; Çıkış</a>
+    </div>
+
+    <div class="main">@RenderBody()</div>
+</body>
+</html>

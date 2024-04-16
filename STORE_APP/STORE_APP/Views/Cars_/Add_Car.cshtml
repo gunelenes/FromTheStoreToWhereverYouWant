@@ -1,0 +1,60 @@
+﻿@model STORE_APP.Models.Entity.CARS
+@{
+    ViewBag.Title = "Add_Car";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<form class="form-group" method="post">
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- jQuery UI (Including datepicker) -->
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+    <div></div>
+    @* Car Category Id *@
+    <div style="margin-top:15px">
+        <label>Car Category Id</label>
+        @Html.DropDownListFor(x => x.CARS_CATEGORY.CAR_CATEGORY_ID, (List<SelectListItem>)ViewBag.listCarCategoryView, new { @class = "form-control" })
+    </div>
+    @* Car Shassis Code *@
+<div style="margin-top:15px">
+    <label>Shassis Code</label>
+    @Html.TextBoxFor(car => car.CAR_SHASSIS_CODE, new { @class = "form-control" }) 
+    @Html.ValidationMessageFor(x => x.CAR_SHASSIS_CODE, "", new { @style = "color:red" })
+</div>
+    @* Car Number Plate *@
+<div style="margin-top:15px">
+    <label>Number Plate</label>
+    @Html.TextBoxFor(car => car.CAR_NUMBER_PLATE, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.CAR_NUMBER_PLATE, "", new { @style = "color:red" })
+</div>
+    @* Activity *@
+    <div style="margin-top:15px">
+        <datalist id="Activity">
+            <option value="1">
+            <option value="0">
+        </datalist>
+        <label>Activity</label>
+        <input type="text" class="form-control" name="IS_ACTIV"
+               list="Activity" />
+        @Html.ValidationMessageFor(x => x.IS_ACTIV, "", new { @style = "color:red" })
+    </div>
+
+    <div style="margin-top:15px">
+        <label>DATE</label>
+        <input type="text" id="datepicker" class="form-control" name="C_DATE"
+               value="@DateTime.Now.ToShortDateString()" />
+        <script>
+            $(function () {
+                $("#datepicker").datepicker({ dateFormat: "dd/mm/yy" });
+            });
+        </script>
+    </div>
+    @* Add Car Button *@
+    <div style="margin-top:15px">
+        <button class="btn btn-info">Add Car</button>
+    </div>
+</form>

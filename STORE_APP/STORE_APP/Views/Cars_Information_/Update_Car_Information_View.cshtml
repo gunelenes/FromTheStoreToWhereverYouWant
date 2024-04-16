@@ -1,0 +1,90 @@
+﻿@model STORE_APP.Models.Entity.CARS_INFORMATION
+@{
+    ViewBag.Title = "Update_Car_Information_View";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>Update_Car_Information_View</h2>
+
+@*                      ActionResult         Controller *@
+@using (Html.BeginForm("Update_Car_Information", "Cars_Information_", FormMethod.Post))
+{
+
+    <div style="margin-bottom:15px"></div>
+    <div class="form-group">
+        <!-- jQuery -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+        <!-- jQuery UI (Including datepicker) -->
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <div></div>
+        @* Car Category Id *@
+        @Html.LabelFor(k => k.CAR_INFORMATION_ID)
+        @Html.TextBoxFor(k => k.CAR_INFORMATION_ID, new { @class = "form-control" })
+        <div style="margin-top:15px">
+            <label>SHASSIS CODE</label>
+            @Html.TextBoxFor(car => car.CAR_SHASSIS_CODE, new { @class = "form-control" })
+            @Html.ValidationMessageFor(car => car.CAR_SHASSIS_CODE, "", new { @style = "color:red" })
+        </div>
+        @* Car Shassis Code *@
+        <div style="margin-top:15px">
+            <label>NUMBER PLATE</label>
+            @Html.TextBoxFor(car => car.CAR_NUMBER_PLATE, new { @class = "form-control" })
+            @Html.ValidationMessageFor(car => car.CAR_NUMBER_PLATE, "", new { @style = "color:red" })
+        </div>
+        <div style="margin-top:15px">
+            <label>KILOMETER</label>
+            @Html.TextBoxFor(car => car.KILOMETER, new { @class = "form-control" })
+            @Html.ValidationMessageFor(car => car.KILOMETER, "", new { @style = "color:red" })
+        </div>
+        @* INFORMATION *@
+        <div style="margin-top:15px">
+            <label>Information</label>
+            @Html.TextBoxFor(car => car.INFORMATION, new { @class = "form-control" })
+            @Html.ValidationMessageFor(car => car.INFORMATION, "", new { @style = "color:red" })
+        </div>
+        @* LAST_MAINTANCE_DATE *@
+        <div style="margin-top:15px">
+            <label>LAST MAINTANCE DATE</label>
+            <input type="text" id="datepicker" class="form-control" name="LAST_MAINTANCE_DATE"
+                   value="@DateTime.Now.ToShortDateString()" />
+            <script>
+                $(function () {
+                    $("#datepicker").datepicker();
+                });
+            </script>
+        </div>
+        <div style="margin-top:15px">
+            <label>NEXT MAINTANCE DATE</label>
+            <input type="text" id="datepicker1" class="form-control" name="NEXT_MAINTANCE_DATE"
+                   value="@DateTime.Now.ToShortDateString()" />
+            <script>
+                $(function () {
+                    $("#datepicker1").datepicker();
+                });
+            </script>
+        </div>
+        <div style="margin-top:15px">
+            <datalist id="Activity">
+                <option value="1">
+                <option value="0">
+            </datalist>
+            <label>Activity</label>
+            <input type="text" class="form-control" name="IS_ACTIV"
+                   list="Activity" />
+            @Html.ValidationMessageFor(x => x.IS_ACTIV, "", new { @style = "color:red" })
+        </div>
+        <div style="margin-top:15px">
+            <label>C Date</label>
+            <input type="text" id="datepicker2" class="form-control" name="U_DATE"
+                   value="@DateTime.Now.ToShortDateString()" />
+            <script>
+                $(function () {
+                    $("#datepicker2").datepicker();
+                });
+            </script>
+        </div>
+    </div>
+    <div><button class="btn btn-warning">Update</button></div>
+}

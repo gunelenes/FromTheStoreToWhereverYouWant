@@ -1,0 +1,253 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DB_STORE_APPModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="APPOINTMENT">
+    <Key>
+      <PropertyRef Name="APPOINTMENT_ID" />
+    </Key>
+    <Property Name="APPOINTMENT_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CUSTOMER_ID" Type="Int32" />
+    <Property Name="ROTATION" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="DATE" Type="DateTime" Precision="0" />
+    <Property Name="CLOCK" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+    <Property Name="CAR_CATEGORY_ID" Type="Int32" />
+    <Property Name="IS_ACTIV" Type="Int32" />
+    <Property Name="C_DATE" Type="DateTime" Precision="0" />
+    <Property Name="U_DATE" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="CARS_CATEGORY" Relationship="Self.FK_APPOINTMENT_CARS_CATEGORY" FromRole="APPOINTMENT" ToRole="CARS_CATEGORY" />
+    <NavigationProperty Name="CUSTOMERS" Relationship="Self.FK_APPOINTMENT_CUSTOMERS" FromRole="APPOINTMENT" ToRole="CUSTOMERS" />
+  </EntityType>
+  <EntityType Name="CARS">
+    <Key>
+      <PropertyRef Name="CAR_ID" />
+    </Key>
+    <Property Name="CAR_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CAR_CATEGORY_ID" Type="Int32" />
+    <Property Name="CAR_SHASSIS_CODE" Type="Int32" />
+    <Property Name="CAR_NUMBER_PLATE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IS_ACTIV" Type="Int32" />
+    <Property Name="C_DATE" Type="DateTime" Precision="0" />
+    <Property Name="U_DATE" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="CARS_CATEGORY" Relationship="Self.FK_CARS_CARS_CATEGORY" FromRole="CARS" ToRole="CARS_CATEGORY" />
+    <NavigationProperty Name="SALES_HISTORY" Relationship="Self.FK_SALES_HISTORY_CARS" FromRole="CARS" ToRole="SALES_HISTORY" />
+  </EntityType>
+  <EntityType Name="CARS_CATEGORY">
+    <Key>
+      <PropertyRef Name="CAR_CATEGORY_ID" />
+    </Key>
+    <Property Name="CAR_CATEGORY_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CAR_CATEGORY_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IS_ACTIV" Type="Int32" />
+    <Property Name="C_DATE" Type="DateTime" Precision="0" />
+    <Property Name="U_DATE" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="APPOINTMENT" Relationship="Self.FK_APPOINTMENT_CARS_CATEGORY" FromRole="CARS_CATEGORY" ToRole="APPOINTMENT" />
+    <NavigationProperty Name="CARS" Relationship="Self.FK_CARS_CARS_CATEGORY" FromRole="CARS_CATEGORY" ToRole="CARS" />
+  </EntityType>
+  <EntityType Name="CARS_INFORMATION">
+    <Key>
+      <PropertyRef Name="CAR_SHASSIS_CODE" />
+    </Key>
+    <Property Name="CAR_SHASSIS_CODE" Type="Int32" Nullable="false" />
+    <Property Name="CAR_NUMBER_PLATE" Type="Binary" MaxLength="50" FixedLength="false" />
+    <Property Name="INFORMATION" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="LAST_MAINTANCE_DATE" Type="DateTime" Precision="0" />
+    <Property Name="NEXT_MAINTANCE_DATE" Type="DateTime" Precision="0" />
+    <Property Name="IS_ACTIV" Type="Int32" />
+    <Property Name="C_DATE" Type="DateTime" Precision="0" />
+    <Property Name="U_DATE" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityType Name="CUSTOMERS">
+    <Key>
+      <PropertyRef Name="CUSTOMER_ID" />
+    </Key>
+    <Property Name="CUSTOMER_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SURNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PHONE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="COMPANY_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IS_ACTIV" Type="Int32" />
+    <Property Name="C_DATE" Type="DateTime" Precision="0" />
+    <Property Name="U_DATE" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="APPOINTMENT" Relationship="Self.FK_APPOINTMENT_CUSTOMERS" FromRole="CUSTOMERS" ToRole="APPOINTMENT" />
+    <NavigationProperty Name="SALES_HISTORY" Relationship="Self.FK_SALES_HISTORY_CUSTOMERS" FromRole="CUSTOMERS" ToRole="SALES_HISTORY" />
+  </EntityType>
+  <EntityType Name="DEPARTMENTS">
+    <Key>
+      <PropertyRef Name="DEPARTMENT_ID" />
+    </Key>
+    <Property Name="DEPARTMENT_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DEPARTMENT_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IS_ACTIV" Type="Int32" />
+    <Property Name="C_DATE" Type="DateTime" Precision="0" />
+    <Property Name="U_DATE" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="EMPLOYEES" Relationship="Self.FK_EMPLOYEES_DEPARTMENTS" FromRole="DEPARTMENTS" ToRole="EMPLOYEES" />
+  </EntityType>
+  <EntityType Name="EMPLOYEES">
+    <Key>
+      <PropertyRef Name="EMPLOYEE_ID" />
+    </Key>
+    <Property Name="EMPLOYEE_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DEPARTMENT_ID" Type="Int32" />
+    <Property Name="NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SURNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="BİRT_DATE" Type="DateTime" Precision="0" />
+    <Property Name="IDENTIFY_NUMBER" Type="Int32" />
+    <Property Name="EMPLOYEE_POINT" Type="Int32" />
+    <Property Name="TOTAL_SEVICE" Type="Int32" />
+    <Property Name="IS_ACTIV" Type="Int32" />
+    <Property Name="C_DATE" Type="DateTime" Precision="0" />
+    <Property Name="U_DATE" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="DEPARTMENTS" Relationship="Self.FK_EMPLOYEES_DEPARTMENTS" FromRole="EMPLOYEES" ToRole="DEPARTMENTS" />
+    <NavigationProperty Name="SALES_HISTORY" Relationship="Self.FK_SALES_HISTORY_EMPLOYEES" FromRole="EMPLOYEES" ToRole="SALES_HISTORY" />
+  </EntityType>
+  <EntityType Name="SALES_HISTORY">
+    <Key>
+      <PropertyRef Name="SALES_ID" />
+    </Key>
+    <Property Name="SALES_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CUSTOMER_ID" Type="Int32" />
+    <Property Name="CAR_ID" Type="Int32" />
+    <Property Name="EMPLOYEE_ID" Type="Int32" />
+    <Property Name="EMPLOYEE_POINT" Type="Int32" />
+    <Property Name="ROTATION" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="IS_ACTIV" Type="Int32" />
+    <Property Name="C_DATE" Type="DateTime" Precision="0" />
+    <Property Name="U_DATE" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="CARS" Relationship="Self.FK_SALES_HISTORY_CARS" FromRole="SALES_HISTORY" ToRole="CARS" />
+    <NavigationProperty Name="CUSTOMERS" Relationship="Self.FK_SALES_HISTORY_CUSTOMERS" FromRole="SALES_HISTORY" ToRole="CUSTOMERS" />
+    <NavigationProperty Name="EMPLOYEES" Relationship="Self.FK_SALES_HISTORY_EMPLOYEES" FromRole="SALES_HISTORY" ToRole="EMPLOYEES" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK_APPOINTMENT_CARS_CATEGORY">
+    <End Role="CARS_CATEGORY" Type="Self.CARS_CATEGORY" Multiplicity="0..1" />
+    <End Role="APPOINTMENT" Type="Self.APPOINTMENT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CARS_CATEGORY">
+        <PropertyRef Name="CAR_CATEGORY_ID" />
+      </Principal>
+      <Dependent Role="APPOINTMENT">
+        <PropertyRef Name="CAR_CATEGORY_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_APPOINTMENT_CUSTOMERS">
+    <End Role="CUSTOMERS" Type="Self.CUSTOMERS" Multiplicity="0..1" />
+    <End Role="APPOINTMENT" Type="Self.APPOINTMENT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CUSTOMERS">
+        <PropertyRef Name="CUSTOMER_ID" />
+      </Principal>
+      <Dependent Role="APPOINTMENT">
+        <PropertyRef Name="CUSTOMER_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CARS_CARS_CATEGORY">
+    <End Role="CARS_CATEGORY" Type="Self.CARS_CATEGORY" Multiplicity="0..1" />
+    <End Role="CARS" Type="Self.CARS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CARS_CATEGORY">
+        <PropertyRef Name="CAR_CATEGORY_ID" />
+      </Principal>
+      <Dependent Role="CARS">
+        <PropertyRef Name="CAR_CATEGORY_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SALES_HISTORY_CARS">
+    <End Role="CARS" Type="Self.CARS" Multiplicity="0..1" />
+    <End Role="SALES_HISTORY" Type="Self.SALES_HISTORY" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CARS">
+        <PropertyRef Name="CAR_ID" />
+      </Principal>
+      <Dependent Role="SALES_HISTORY">
+        <PropertyRef Name="CAR_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SALES_HISTORY_CUSTOMERS">
+    <End Role="CUSTOMERS" Type="Self.CUSTOMERS" Multiplicity="0..1" />
+    <End Role="SALES_HISTORY" Type="Self.SALES_HISTORY" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CUSTOMERS">
+        <PropertyRef Name="CUSTOMER_ID" />
+      </Principal>
+      <Dependent Role="SALES_HISTORY">
+        <PropertyRef Name="CUSTOMER_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EMPLOYEES_DEPARTMENTS">
+    <End Role="DEPARTMENTS" Type="Self.DEPARTMENTS" Multiplicity="0..1" />
+    <End Role="EMPLOYEES" Type="Self.EMPLOYEES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DEPARTMENTS">
+        <PropertyRef Name="DEPARTMENT_ID" />
+      </Principal>
+      <Dependent Role="EMPLOYEES">
+        <PropertyRef Name="DEPARTMENT_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SALES_HISTORY_EMPLOYEES">
+    <End Role="EMPLOYEES" Type="Self.EMPLOYEES" Multiplicity="0..1" />
+    <End Role="SALES_HISTORY" Type="Self.SALES_HISTORY" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EMPLOYEES">
+        <PropertyRef Name="EMPLOYEE_ID" />
+      </Principal>
+      <Dependent Role="SALES_HISTORY">
+        <PropertyRef Name="EMPLOYEE_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DB_STORE_APPEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="APPOINTMENT" EntityType="Self.APPOINTMENT" />
+    <EntitySet Name="CARS" EntityType="Self.CARS" />
+    <EntitySet Name="CARS_CATEGORY" EntityType="Self.CARS_CATEGORY" />
+    <EntitySet Name="CARS_INFORMATION" EntityType="Self.CARS_INFORMATION" />
+    <EntitySet Name="CUSTOMERS" EntityType="Self.CUSTOMERS" />
+    <EntitySet Name="DEPARTMENTS" EntityType="Self.DEPARTMENTS" />
+    <EntitySet Name="EMPLOYEES" EntityType="Self.EMPLOYEES" />
+    <EntitySet Name="SALES_HISTORY" EntityType="Self.SALES_HISTORY" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <AssociationSet Name="FK_APPOINTMENT_CARS_CATEGORY" Association="Self.FK_APPOINTMENT_CARS_CATEGORY">
+      <End Role="CARS_CATEGORY" EntitySet="CARS_CATEGORY" />
+      <End Role="APPOINTMENT" EntitySet="APPOINTMENT" />
+    </AssociationSet>
+    <AssociationSet Name="FK_APPOINTMENT_CUSTOMERS" Association="Self.FK_APPOINTMENT_CUSTOMERS">
+      <End Role="CUSTOMERS" EntitySet="CUSTOMERS" />
+      <End Role="APPOINTMENT" EntitySet="APPOINTMENT" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CARS_CARS_CATEGORY" Association="Self.FK_CARS_CARS_CATEGORY">
+      <End Role="CARS_CATEGORY" EntitySet="CARS_CATEGORY" />
+      <End Role="CARS" EntitySet="CARS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SALES_HISTORY_CARS" Association="Self.FK_SALES_HISTORY_CARS">
+      <End Role="CARS" EntitySet="CARS" />
+      <End Role="SALES_HISTORY" EntitySet="SALES_HISTORY" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SALES_HISTORY_CUSTOMERS" Association="Self.FK_SALES_HISTORY_CUSTOMERS">
+      <End Role="CUSTOMERS" EntitySet="CUSTOMERS" />
+      <End Role="SALES_HISTORY" EntitySet="SALES_HISTORY" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EMPLOYEES_DEPARTMENTS" Association="Self.FK_EMPLOYEES_DEPARTMENTS">
+      <End Role="DEPARTMENTS" EntitySet="DEPARTMENTS" />
+      <End Role="EMPLOYEES" EntitySet="EMPLOYEES" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SALES_HISTORY_EMPLOYEES" Association="Self.FK_SALES_HISTORY_EMPLOYEES">
+      <End Role="EMPLOYEES" EntitySet="EMPLOYEES" />
+      <End Role="SALES_HISTORY" EntitySet="SALES_HISTORY" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

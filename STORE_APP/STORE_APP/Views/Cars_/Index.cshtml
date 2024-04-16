@@ -1,0 +1,50 @@
+﻿@using STORE_APP.Models.Entity
+    @{
+        ViewBag.Title = "Index";
+        Layout = "~/Views/Shared/Layout.cshtml";
+    }
+
+    <h2><strong>CARS</strong></h2>
+                   @* ActionResult  Controller  *@
+    @using (Html.BeginForm("Index", "Cars_", FormMethod.Get))
+    {
+        <div style="margin-top;15px; margin-bottom:15px;">
+            <b>Number Plate: &nbsp</b>@Html.TextBox("p")
+            <input type="submit" value="Search"
+        </div>
+    }
+
+
+
+<table class="table table-bordered">
+    <div style="margin-top;15px; margin-bottom:15px;">
+    <tr>
+        @* Create Table *@
+        <th>Car Id</th>
+        <th>Category Name</th>
+        <th>Shassis Code</th>
+        <th>Number Plate</th>
+        <th>Activity</th>
+        <th>C_Date</th>
+        <th>U_Date</th>
+        <th>Delete</th>
+        <th>Update</th>
+    </tr>
+    @* Get Date *@
+    @foreach (var car in Model)
+    {
+        <tr>
+            @* Get Date For Table *@
+            <td>@car.CAR_ID</td>
+            <td>@car.CARS_CATEGORY.CAR_CATEGORY_NAME</td>
+            <td>@car.CAR_SHASSIS_CODE</td>
+            <td>@car.CAR_NUMBER_PLATE</td>
+            <td>@car.IS_ACTIV</td>
+            <td>@Convert.ToDateTime(car.C_DATE).ToString("dd/MM/yyyy")</td>
+            <td>@Convert.ToDateTime(car.U_DATE).ToString("dd/MM/yyyy")</td>
+            <td>@Html.ActionLink("Delete", "Delete_Car", new { id = car.CAR_ID }, new { @class = "btn btn-danger", onclick = "return confirm('Do you want delete this CAR?')" })</td>
+            <td><a href="/Cars_/Update_Car_View/@car.CAR_ID" class="btn btn-success">Update</a></td>
+        </tr>
+    }
+</table>
+    <a href="/Cars_/Add_Car/" class="btn btn-primary">Add New Car</a>

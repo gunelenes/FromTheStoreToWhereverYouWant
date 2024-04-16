@@ -1,0 +1,17 @@
+﻿@model STORE_APP.Models.Entity.About
+@{
+    ViewBag.Title = "Add_About";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<form class="form-group" method="post">
+<div style="margin-top:15px;">
+    <label>Department Name</label>
+    @*<input type="text" class="form-control" name="DEPARTMENT_NAME" />*@
+    @Html.TextBoxFor(x => x.Defination, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.Defination, "", new { @style = "color:red" })
+</div>
+<div style="margin-top:15px">
+    <button class=" btn btn-info" id="btn_Add">Add About</button>
+</div>
+    </form>

@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "MaintenanceDueCars";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+<h2><strong>Vehicles Malfunctions</strong></h2>
+<div style="margin-top;15px; margin-bottom:15px;">
+    <table class="table table-bordered">
+        <div style="margin-top;15px; margin-bottom:15px;" />
+        <tr>
+            @* Create Table *@
+            <th>Number Plate </th>
+            <th>Last Maintenance Date</th>
+            <th>Next Maintenance Date</th>
+        </tr>
+        @* Get Date *@
+
+        @foreach (var car in Model)
+        {
+            <tr>
+                @* Get Date For Table *@
+                <td>@car.CarNumberPlate</td>
+                <td>@Convert.ToDateTime(car.LastMaintenanceDate).ToString("dd/MM/yyyy")</td>
+                <td>@Convert.ToDateTime(car.NextMaintenanceDate).ToString("dd/MM/yyyy")</td>
+            </tr>
+        }
+    </table>
+</div>

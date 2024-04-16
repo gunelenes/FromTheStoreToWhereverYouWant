@@ -1,0 +1,38 @@
+﻿@using STORE_APP.Models.Entity;
+    @{
+        ViewBag.Title = "Index";
+        Layout = "~/Views/Shared/Layout.cshtml";
+    }
+
+    <h2><strong>Car Category</strong></h2>
+
+    <table class="table table-bordered">
+        <tr>
+            @* Create Table *@
+            <th>Category Id</th>
+            <th>Category Name</th>
+            <th>Image Link</th>
+            <th>Activity</th>
+            <th>C_Date</th>
+            <th>U_Date</th>
+            <th>Delete</th>
+            <th>Update</th>
+        </tr>
+        @* Get Date *@
+        @foreach (var ctg in Model)
+        {
+            <tr>
+                @* Get Date For Table *@
+                <td>@ctg.CAR_CATEGORY_ID</td>
+                <td>@ctg.CAR_CATEGORY_NAME</td>
+                <td>@ctg.CAR_IMG</td>
+                <td>@ctg.IS_ACTIV</td>
+                <td>@Convert.ToDateTime(ctg.C_DATE).ToString("dd/MM/yyyy")</td>
+                <td>@Convert.ToDateTime(ctg.U_DATE).ToString("dd/MM/yyyy")</td>            
+                <td>@Html.ActionLink("Delete", "Delete_Category", new { id = ctg.CAR_CATEGORY_ID }, new { @class = "btn btn-danger", onclick = "return confirm('Do you want delete this category?')" })</td>
+                <td><a href="/Cars_Category_/Update_Category_View/@ctg.CAR_CATEGORY_ID" class="btn btn-success">Update</a></td>
+            </tr>
+        }
+    </table>
+    <a href="/Cars_Category_/Add_Category" class="btn btn-primary">Add New Category</a>
+

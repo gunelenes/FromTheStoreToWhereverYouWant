@@ -1,0 +1,184 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DB_STORE_APPModelStoreContainer" CdmEntityContainer="DB_STORE_APPEntities1">
+    <EntitySetMapping Name="About">
+      <EntityTypeMapping TypeName="DB_STORE_APPModel.About">
+        <MappingFragment StoreEntitySet="About">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Defination" ColumnName="Defination" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ACTIVITY">
+      <EntityTypeMapping TypeName="DB_STORE_APPModel.ACTIVITY">
+        <MappingFragment StoreEntitySet="ACTIVITY">
+          <ScalarProperty Name="ACTIVITY_ID" ColumnName="ACTIVITY_ID" />
+          <ScalarProperty Name="ACTIVITY_NAME" ColumnName="ACTIVITY_NAME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="APPOINTMENT">
+      <EntityTypeMapping TypeName="DB_STORE_APPModel.APPOINTMENT">
+        <MappingFragment StoreEntitySet="APPOINTMENT">
+          <ScalarProperty Name="APPOINTMENT_ID" ColumnName="APPOINTMENT_ID" />
+          <ScalarProperty Name="CUSTOMER_ID" ColumnName="CUSTOMER_ID" />
+          <ScalarProperty Name="ROTATION" ColumnName="ROTATION" />
+          <ScalarProperty Name="DATE" ColumnName="DATE" />
+          <ScalarProperty Name="CLOCK" ColumnName="CLOCK" />
+          <ScalarProperty Name="CAR_CATEGORY_ID" ColumnName="CAR_CATEGORY_ID" />
+          <ScalarProperty Name="IS_ACTIV" ColumnName="IS_ACTIV" />
+          <ScalarProperty Name="C_DATE" ColumnName="C_DATE" />
+          <ScalarProperty Name="U_DATE" ColumnName="U_DATE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CARS">
+      <EntityTypeMapping TypeName="DB_STORE_APPModel.CARS">
+        <MappingFragment StoreEntitySet="CARS">
+          <ScalarProperty Name="CAR_ID" ColumnName="CAR_ID" />
+          <ScalarProperty Name="CAR_CATEGORY_ID" ColumnName="CAR_CATEGORY_ID" />
+          <ScalarProperty Name="CAR_NUMBER_PLATE" ColumnName="CAR_NUMBER_PLATE" />
+          <ScalarProperty Name="IS_ACTIV" ColumnName="IS_ACTIV" />
+          <ScalarProperty Name="C_DATE" ColumnName="C_DATE" />
+          <ScalarProperty Name="U_DATE" ColumnName="U_DATE" />
+          <ScalarProperty Name="CAR_SHASSIS_CODE" ColumnName="CAR_SHASSIS_CODE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CARS_CATEGORY">
+      <EntityTypeMapping TypeName="DB_STORE_APPModel.CARS_CATEGORY">
+        <MappingFragment StoreEntitySet="CARS_CATEGORY">
+          <ScalarProperty Name="CAR_CATEGORY_ID" ColumnName="CAR_CATEGORY_ID" />
+          <ScalarProperty Name="CAR_CATEGORY_NAME" ColumnName="CAR_CATEGORY_NAME" />
+          <ScalarProperty Name="IS_ACTIV" ColumnName="IS_ACTIV" />
+          <ScalarProperty Name="C_DATE" ColumnName="C_DATE" />
+          <ScalarProperty Name="U_DATE" ColumnName="U_DATE" />
+          <ScalarProperty Name="CAR_IMG" ColumnName="CAR_IMG" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CARS_INFORMATION">
+      <EntityTypeMapping TypeName="DB_STORE_APPModel.CARS_INFORMATION">
+        <MappingFragment StoreEntitySet="CARS_INFORMATION">
+          <ScalarProperty Name="CAR_SHASSIS_CODE" ColumnName="CAR_SHASSIS_CODE" />
+          <ScalarProperty Name="CAR_INFORMATION_ID" ColumnName="CAR_INFORMATION_ID" />
+          <ScalarProperty Name="CAR_NUMBER_PLATE" ColumnName="CAR_NUMBER_PLATE" />
+          <ScalarProperty Name="INFORMATION" ColumnName="INFORMATION" />
+          <ScalarProperty Name="LAST_MAINTANCE_DATE" ColumnName="LAST_MAINTANCE_DATE" />
+          <ScalarProperty Name="NEXT_MAINTANCE_DATE" ColumnName="NEXT_MAINTANCE_DATE" />
+          <ScalarProperty Name="IS_ACTIV" ColumnName="IS_ACTIV" />
+          <ScalarProperty Name="C_DATE" ColumnName="C_DATE" />
+          <ScalarProperty Name="U_DATE" ColumnName="U_DATE" />
+          <ScalarProperty Name="KILOMETER" ColumnName="KILOMETER" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CUSTOMERS">
+      <EntityTypeMapping TypeName="DB_STORE_APPModel.CUSTOMERS">
+        <MappingFragment StoreEntitySet="CUSTOMERS">
+          <ScalarProperty Name="CUSTOMER_ID" ColumnName="CUSTOMER_ID" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="SURNAME" ColumnName="SURNAME" />
+          <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="COMPANY_NAME" ColumnName="COMPANY_NAME" />
+          <ScalarProperty Name="IS_ACTIV" ColumnName="IS_ACTIV" />
+          <ScalarProperty Name="C_DATE" ColumnName="C_DATE" />
+          <ScalarProperty Name="U_DATE" ColumnName="U_DATE" />
+          <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DEPARTMENTS">
+      <EntityTypeMapping TypeName="DB_STORE_APPModel.DEPARTMENTS">
+        <MappingFragment StoreEntitySet="DEPARTMENTS">
+          <ScalarProperty Name="DEPARTMENT_ID" ColumnName="DEPARTMENT_ID" />
+          <ScalarProperty Name="DEPARTMENT_NAME" ColumnName="DEPARTMENT_NAME" />
+          <ScalarProperty Name="IS_ACTIV" ColumnName="IS_ACTIV" />
+          <ScalarProperty Name="C_DATE" ColumnName="C_DATE" />
+          <ScalarProperty Name="U_DATE" ColumnName="U_DATE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EMPLOYEES">
+      <EntityTypeMapping TypeName="DB_STORE_APPModel.EMPLOYEES">
+        <MappingFragment StoreEntitySet="EMPLOYEES">
+          <ScalarProperty Name="EMPLOYEE_ID" ColumnName="EMPLOYEE_ID" />
+          <ScalarProperty Name="DEPARTMENT_ID" ColumnName="DEPARTMENT_ID" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="SURNAME" ColumnName="SURNAME" />
+          <ScalarProperty Name="BIRT_DATE" ColumnName="BIRT_DATE" />
+          <ScalarProperty Name="IDENTIFY_NUMBER" ColumnName="IDENTIFY_NUMBER" />
+          <ScalarProperty Name="EMPLOYEE_POINT" ColumnName="EMPLOYEE_POINT" />
+          <ScalarProperty Name="TOTAL_SERVICE" ColumnName="TOTAL_SERVICE" />
+          <ScalarProperty Name="IS_ACTIV" ColumnName="IS_ACTIV" />
+          <ScalarProperty Name="C_DATE" ColumnName="C_DATE" />
+          <ScalarProperty Name="U_DATE" ColumnName="U_DATE" />
+          <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SALES_HISTORY">
+      <EntityTypeMapping TypeName="DB_STORE_APPModel.SALES_HISTORY">
+        <MappingFragment StoreEntitySet="SALES_HISTORY">
+          <ScalarProperty Name="SALES_ID" ColumnName="SALES_ID" />
+          <ScalarProperty Name="CUSTOMER_ID" ColumnName="CUSTOMER_ID" />
+          <ScalarProperty Name="CAR_ID" ColumnName="CAR_ID" />
+          <ScalarProperty Name="EMPLOYEE_ID" ColumnName="EMPLOYEE_ID" />
+          <ScalarProperty Name="EMPLOYEE_POINT" ColumnName="EMPLOYEE_POINT" />
+          <ScalarProperty Name="ROTATION" ColumnName="ROTATION" />
+          <ScalarProperty Name="IS_ACTIV" ColumnName="IS_ACTIV" />
+          <ScalarProperty Name="C_DATE" ColumnName="C_DATE" />
+          <ScalarProperty Name="U_DATE" ColumnName="U_DATE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="DB_STORE_APPModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Requests">
+      <EntityTypeMapping TypeName="DB_STORE_APPModel.Request">
+        <MappingFragment StoreEntitySet="Requests">
+          <ScalarProperty Name="subject" ColumnName="subject" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="message" ColumnName="message" />
+          <ScalarProperty Name="customerID" ColumnName="customerID" />
+          <ScalarProperty Name="requestID" ColumnName="requestID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="DB_STORE_APPModel.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="DB_STORE_APPModel.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="DB_STORE_APPModel.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="DB_STORE_APPModel.Store.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DB_STORE_APPModel.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="DB_STORE_APPModel.Store.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DB_STORE_APPModel.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="DB_STORE_APPModel.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="DB_STORE_APPModel.Store.sp_upgraddiagrams" />
+  </EntityContainerMapping>
+</Mapping>

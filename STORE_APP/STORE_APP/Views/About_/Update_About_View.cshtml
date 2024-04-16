@@ -1,0 +1,19 @@
+﻿@model STORE_APP.Models.Entity.About
+@{
+    ViewBag.Title = "Update_About_View";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+@using (Html.BeginForm("Update_Department", "Departments_", FormMethod.Post))
+{
+    <form class="form-group" method="post">
+        <div style="margin-top:15px;">
+            <label>Department Name</label>
+            @*<input type="text" class="form-control" name="DEPARTMENT_NAME" />*@
+            @Html.TextBoxFor(x => x.Defination, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.Defination, "", new { @style = "color:red" })
+        </div>
+        <div style="margin-top:15px">
+            <div><button class="btn btn-warning">Update</button></div>
+        </div>
+    </form>
+}

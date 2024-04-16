@@ -1,0 +1,52 @@
+﻿@using STORE_APP.Models.Entity
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2><strong>Sales History</strong></h2>
+@* ActionResult  Controller  *@
+@using (Html.BeginForm("Index", "Sales_History_", FormMethod.Get))
+{
+    <div style="margin-top;15px; margin-bottom:15px;">
+        <b>Customer Id: &nbsp</b>@Html.TextBox("p")
+        <input type="submit" value="Search"
+    </div>
+}
+
+
+
+<table class="table table-bordered">
+    <div style="margin-top;15px; margin-bottom:15px;">
+    <tr>
+        @* Create Table *@
+        <th>Sales Id</th>
+        <th>Customer Id</th>
+        <th>Car Number Plate</th>
+        <th>Employee Id</th>
+        <th>Rotation</th>
+        <th>Activity</th>
+        <th>C_Date</th>
+        <th>U_Date</th>
+        <th>Delete</th>
+        <th>Update</th>
+    </tr>
+    @* Get Date *@
+    @foreach (var sales_history in Model)
+    {
+        <tr>
+            @* Get Date For Table *@
+            <td>@sales_history.SALES_ID</td>
+            <td>@sales_history.CUSTOMERS.NAME @sales_history.CUSTOMERS.SURNAME</td>
+            <td>@sales_history.CARS.CAR_NUMBER_PLATE</td>
+            <td>@sales_history.EMPLOYEES.NAME @sales_history.EMPLOYEES.SURNAME</td>
+            <td>@sales_history.ROTATION</td>
+            <td>@sales_history.IS_ACTIV</td>
+            <td>@Convert.ToDateTime(sales_history.C_DATE).ToString("dd/MM/yyyy")</td>
+            <td>@Convert.ToDateTime(sales_history.U_DATE).ToString("dd/MM/yyyy")</td>
+            <td>@Html.ActionLink("Delete", "Delete_Sales_History", new { id = sales_history.SALES_ID }, new { @class = "btn btn-danger", onclick = "return confirm('Do you want delete this CAR?')" })</td>
+            <td><a href="/Sales_History_/Update_Sales_History_View/@sales_history.SALES_ID" class="btn btn-success">Update</a></td>
+        </tr>
+    }
+</table>
+<a href="/Sales_History_/Add_Sales_History/" class="btn btn-primary">Add New Sales</a>

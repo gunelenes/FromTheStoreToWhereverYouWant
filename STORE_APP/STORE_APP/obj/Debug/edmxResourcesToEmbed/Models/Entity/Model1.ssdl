@@ -1,0 +1,316 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DB_STORE_APPModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="About">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Defination" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="ACTIVITY">
+    <Key>
+      <PropertyRef Name="ACTIVITY_ID" />
+    </Key>
+    <Property Name="ACTIVITY_ID" Type="int" Nullable="false" />
+    <Property Name="ACTIVITY_NAME" Type="varchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="APPOINTMENT">
+    <Key>
+      <PropertyRef Name="APPOINTMENT_ID" />
+    </Key>
+    <Property Name="APPOINTMENT_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CUSTOMER_ID" Type="int" />
+    <Property Name="ROTATION" Type="varchar" MaxLength="200" />
+    <Property Name="DATE" Type="date" />
+    <Property Name="CLOCK" Type="varchar" MaxLength="6" />
+    <Property Name="CAR_CATEGORY_ID" Type="int" />
+    <Property Name="IS_ACTIV" Type="int" />
+    <Property Name="C_DATE" Type="date" />
+    <Property Name="U_DATE" Type="date" />
+  </EntityType>
+  <EntityType Name="CARS">
+    <Key>
+      <PropertyRef Name="CAR_ID" />
+    </Key>
+    <Property Name="CAR_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CAR_CATEGORY_ID" Type="int" />
+    <Property Name="CAR_NUMBER_PLATE" Type="varchar" MaxLength="50" />
+    <Property Name="IS_ACTIV" Type="int" />
+    <Property Name="C_DATE" Type="date" />
+    <Property Name="U_DATE" Type="date" />
+    <Property Name="CAR_SHASSIS_CODE" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="CARS_CATEGORY">
+    <Key>
+      <PropertyRef Name="CAR_CATEGORY_ID" />
+    </Key>
+    <Property Name="CAR_CATEGORY_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CAR_CATEGORY_NAME" Type="varchar" MaxLength="50" />
+    <Property Name="IS_ACTIV" Type="int" />
+    <Property Name="C_DATE" Type="date" />
+    <Property Name="U_DATE" Type="date" />
+    <Property Name="CAR_IMG" Type="varchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="CARS_INFORMATION">
+    <Key>
+      <PropertyRef Name="CAR_INFORMATION_ID" />
+    </Key>
+    <Property Name="CAR_NUMBER_PLATE" Type="varchar" MaxLength="50" />
+    <Property Name="INFORMATION" Type="varchar" MaxLength="500" />
+    <Property Name="LAST_MAINTANCE_DATE" Type="date" />
+    <Property Name="NEXT_MAINTANCE_DATE" Type="date" />
+    <Property Name="IS_ACTIV" Type="int" />
+    <Property Name="C_DATE" Type="date" />
+    <Property Name="U_DATE" Type="date" />
+    <Property Name="KILOMETER" Type="int" />
+    <Property Name="CAR_INFORMATION_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CAR_SHASSIS_CODE" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="CUSTOMERS">
+    <Key>
+      <PropertyRef Name="CUSTOMER_ID" />
+    </Key>
+    <Property Name="CUSTOMER_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NAME" Type="varchar" MaxLength="50" />
+    <Property Name="SURNAME" Type="varchar" MaxLength="50" />
+    <Property Name="PHONE" Type="varchar" MaxLength="50" />
+    <Property Name="EMAIL" Type="varchar" MaxLength="50" />
+    <Property Name="COMPANY_NAME" Type="varchar" MaxLength="50" />
+    <Property Name="IS_ACTIV" Type="int" />
+    <Property Name="C_DATE" Type="date" />
+    <Property Name="U_DATE" Type="date" />
+    <Property Name="PASSWORD" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="DEPARTMENTS">
+    <Key>
+      <PropertyRef Name="DEPARTMENT_ID" />
+    </Key>
+    <Property Name="DEPARTMENT_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DEPARTMENT_NAME" Type="varchar" MaxLength="50" />
+    <Property Name="IS_ACTIV" Type="int" />
+    <Property Name="C_DATE" Type="date" />
+    <Property Name="U_DATE" Type="date" />
+  </EntityType>
+  <EntityType Name="EMPLOYEES">
+    <Key>
+      <PropertyRef Name="EMPLOYEE_ID" />
+    </Key>
+    <Property Name="EMPLOYEE_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DEPARTMENT_ID" Type="int" />
+    <Property Name="NAME" Type="varchar" MaxLength="50" />
+    <Property Name="SURNAME" Type="varchar" MaxLength="50" />
+    <Property Name="BIRT_DATE" Type="date" />
+    <Property Name="IDENTIFY_NUMBER" Type="int" />
+    <Property Name="EMPLOYEE_POINT" Type="int" />
+    <Property Name="TOTAL_SERVICE" Type="int" />
+    <Property Name="IS_ACTIV" Type="int" />
+    <Property Name="C_DATE" Type="date" />
+    <Property Name="U_DATE" Type="date" />
+    <Property Name="PASSWORD" Type="varchar" MaxLength="50" />
+    <Property Name="EMAIL" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Requests">
+    <Key>
+      <PropertyRef Name="requestID" />
+    </Key>
+    <Property Name="requestID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="customerID" Type="int" />
+    <Property Name="message" Type="nvarchar(max)" />
+    <Property Name="date" Type="datetime" />
+    <Property Name="subject" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="SALES_HISTORY">
+    <Key>
+      <PropertyRef Name="SALES_ID" />
+    </Key>
+    <Property Name="SALES_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CUSTOMER_ID" Type="int" />
+    <Property Name="CAR_ID" Type="int" />
+    <Property Name="EMPLOYEE_ID" Type="int" />
+    <Property Name="EMPLOYEE_POINT" Type="int" />
+    <Property Name="ROTATION" Type="varchar" MaxLength="500" />
+    <Property Name="IS_ACTIV" Type="int" />
+    <Property Name="C_DATE" Type="date" />
+    <Property Name="U_DATE" Type="date" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'DB_STORE_APP.dbo.CarSalesByCategory' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="CarSalesByCategory">
+          <Property Name="CAR_CATEGORY_NAME" Type="varchar" MaxLength="50" />
+          <Property Name="Number_Of_Sales" Type="int" />
+        </EntityType>-->
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'DB_STORE_APP.dbo.MaintenanceDueCars' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="MaintenanceDueCars">
+          <Property Name="CAR_NUMBER_PLATE" Type="varchar" MaxLength="50" />
+          <Property Name="LAST_MAINTANCE_DATE" Type="date" />
+          <Property Name="NEXT_MAINTANCE_DATE" Type="date" />
+        </EntityType>-->
+  <Association Name="FK_APPOINTMENT_CARS_CATEGORY">
+    <End Role="CARS_CATEGORY" Type="Self.CARS_CATEGORY" Multiplicity="0..1" />
+    <End Role="APPOINTMENT" Type="Self.APPOINTMENT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CARS_CATEGORY">
+        <PropertyRef Name="CAR_CATEGORY_ID" />
+      </Principal>
+      <Dependent Role="APPOINTMENT">
+        <PropertyRef Name="CAR_CATEGORY_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_APPOINTMENT_CUSTOMERS">
+    <End Role="CUSTOMERS" Type="Self.CUSTOMERS" Multiplicity="0..1" />
+    <End Role="APPOINTMENT" Type="Self.APPOINTMENT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CUSTOMERS">
+        <PropertyRef Name="CUSTOMER_ID" />
+      </Principal>
+      <Dependent Role="APPOINTMENT">
+        <PropertyRef Name="CUSTOMER_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CARS_CARS_CATEGORY">
+    <End Role="CARS_CATEGORY" Type="Self.CARS_CATEGORY" Multiplicity="0..1" />
+    <End Role="CARS" Type="Self.CARS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CARS_CATEGORY">
+        <PropertyRef Name="CAR_CATEGORY_ID" />
+      </Principal>
+      <Dependent Role="CARS">
+        <PropertyRef Name="CAR_CATEGORY_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EMPLOYEES_DEPARTMENTS">
+    <End Role="DEPARTMENTS" Type="Self.DEPARTMENTS" Multiplicity="0..1" />
+    <End Role="EMPLOYEES" Type="Self.EMPLOYEES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DEPARTMENTS">
+        <PropertyRef Name="DEPARTMENT_ID" />
+      </Principal>
+      <Dependent Role="EMPLOYEES">
+        <PropertyRef Name="DEPARTMENT_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SALES_HISTORY_CARS">
+    <End Role="CARS" Type="Self.CARS" Multiplicity="0..1" />
+    <End Role="SALES_HISTORY" Type="Self.SALES_HISTORY" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CARS">
+        <PropertyRef Name="CAR_ID" />
+      </Principal>
+      <Dependent Role="SALES_HISTORY">
+        <PropertyRef Name="CAR_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SALES_HISTORY_CUSTOMERS">
+    <End Role="CUSTOMERS" Type="Self.CUSTOMERS" Multiplicity="0..1" />
+    <End Role="SALES_HISTORY" Type="Self.SALES_HISTORY" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CUSTOMERS">
+        <PropertyRef Name="CUSTOMER_ID" />
+      </Principal>
+      <Dependent Role="SALES_HISTORY">
+        <PropertyRef Name="CUSTOMER_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SALES_HISTORY_EMPLOYEES">
+    <End Role="EMPLOYEES" Type="Self.EMPLOYEES" Multiplicity="0..1" />
+    <End Role="SALES_HISTORY" Type="Self.SALES_HISTORY" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EMPLOYEES">
+        <PropertyRef Name="EMPLOYEE_ID" />
+      </Principal>
+      <Dependent Role="SALES_HISTORY">
+        <PropertyRef Name="EMPLOYEE_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="DB_STORE_APPModelStoreContainer">
+    <EntitySet Name="About" EntityType="Self.About" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ACTIVITY" EntityType="Self.ACTIVITY" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="APPOINTMENT" EntityType="Self.APPOINTMENT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CARS" EntityType="Self.CARS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CARS_CATEGORY" EntityType="Self.CARS_CATEGORY" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CARS_INFORMATION" EntityType="Self.CARS_INFORMATION" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CUSTOMERS" EntityType="Self.CUSTOMERS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DEPARTMENTS" EntityType="Self.DEPARTMENTS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EMPLOYEES" EntityType="Self.EMPLOYEES" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Requests" EntityType="Self.Requests" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SALES_HISTORY" EntityType="Self.SALES_HISTORY" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_APPOINTMENT_CARS_CATEGORY" Association="Self.FK_APPOINTMENT_CARS_CATEGORY">
+      <End Role="CARS_CATEGORY" EntitySet="CARS_CATEGORY" />
+      <End Role="APPOINTMENT" EntitySet="APPOINTMENT" />
+    </AssociationSet>
+    <AssociationSet Name="FK_APPOINTMENT_CUSTOMERS" Association="Self.FK_APPOINTMENT_CUSTOMERS">
+      <End Role="CUSTOMERS" EntitySet="CUSTOMERS" />
+      <End Role="APPOINTMENT" EntitySet="APPOINTMENT" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CARS_CARS_CATEGORY" Association="Self.FK_CARS_CARS_CATEGORY">
+      <End Role="CARS_CATEGORY" EntitySet="CARS_CATEGORY" />
+      <End Role="CARS" EntitySet="CARS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EMPLOYEES_DEPARTMENTS" Association="Self.FK_EMPLOYEES_DEPARTMENTS">
+      <End Role="DEPARTMENTS" EntitySet="DEPARTMENTS" />
+      <End Role="EMPLOYEES" EntitySet="EMPLOYEES" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SALES_HISTORY_CARS" Association="Self.FK_SALES_HISTORY_CARS">
+      <End Role="CARS" EntitySet="CARS" />
+      <End Role="SALES_HISTORY" EntitySet="SALES_HISTORY" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SALES_HISTORY_CUSTOMERS" Association="Self.FK_SALES_HISTORY_CUSTOMERS">
+      <End Role="CUSTOMERS" EntitySet="CUSTOMERS" />
+      <End Role="SALES_HISTORY" EntitySet="SALES_HISTORY" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SALES_HISTORY_EMPLOYEES" Association="Self.FK_SALES_HISTORY_EMPLOYEES">
+      <End Role="EMPLOYEES" EntitySet="EMPLOYEES" />
+      <End Role="SALES_HISTORY" EntitySet="SALES_HISTORY" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

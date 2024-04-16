@@ -1,0 +1,86 @@
+﻿@model STORE_APP.Models.Entity.EMPLOYEES
+@{
+    ViewBag.Title = "Add_Employee";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>Add_Employee</h2>
+
+<form class="form-group" method="post">
+    <div></div>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- jQuery UI (Including datepicker) -->
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    @* Car Category Id *@
+    <div style="margin-top:15px">
+        <label>Employee Department</label>
+        @Html.DropDownListFor(employee => employee.DEPARTMENTS.DEPARTMENT_ID, (List<SelectListItem>)ViewBag.listCarCategoryView, new { @class = "form-control" })
+
+    </div>
+    @* Car Shassis Code *@
+    <div style="margin-top:15px">
+        <label>Name</label>
+        @Html.TextBoxFor(employee => employee.NAME, new { @class = "form-control" })
+        @Html.ValidationMessageFor(employee => employee.NAME, "", new { @style = "color:red" })
+    </div>
+    @* Car Number Plate *@
+    <div style="margin-top:15px">
+        <label>Surname</label>
+        @Html.TextBoxFor(employee => employee.SURNAME, new { @class = "form-control" })
+        @Html.ValidationMessageFor(employee => employee.SURNAME, "", new { @style = "color:red" })
+    </div>
+    @* Activity *@
+    <div style="margin-top:15px">
+        <label>Birt Date</label>
+        <input type="text" id="datepicker" class="form-control" name="BIRT_DATE"
+               value="@DateTime.Now.ToShortDateString()" />
+        <script>
+            $(function () {
+                $("#datepicker").datepicker({ dateFormat: "dd/mm/yy" });
+            });
+        </script>
+    </div>
+    @* Activity *@
+    <div style="margin-top:15px">
+        <label>Identity Number</label>
+        @Html.TextBoxFor(employee => employee.IDENTIFY_NUMBER, new { @class = "form-control" })
+        @Html.ValidationMessageFor(employee => employee.IDENTIFY_NUMBER, "", new { @style = "color:red" })
+    </div>
+    <div style="margin-top:15px">
+        <label>Password</label>
+        @Html.TextBoxFor(employee => employee.PASSWORD, new { @class = "form-control" })
+        @Html.ValidationMessageFor(employee => employee.PASSWORD, "", new { @style = "color:red" })
+    </div>
+    <div style="margin-top:15px">
+        <label>E-Mail</label>
+        @Html.TextBoxFor(employee => employee.EMAIL, new { @class = "form-control" })
+        @Html.ValidationMessageFor(employee => employee.EMAIL, "", new { @style = "color:red" })
+    </div>
+    <div style="margin-top:15px">
+        <datalist id="Activity">
+            <option value="1">
+            <option value="0">
+        </datalist>
+        <label>Activity</label>
+        <input type="text" class="form-control" name="IS_ACTIV"
+               list="Activity" />
+        @Html.ValidationMessageFor(x => x.IS_ACTIV, "", new { @style = "color:red" })
+    </div>
+    <div style="margin-top:15px">
+        <label>C_dATE</label>
+        <input type="text" id="datepicker1" class="form-control" name="C_DATE"
+               value="@DateTime.Now.ToShortDateString()" />
+        <script>
+            $(function () {
+                $("#datepicker1").datepicker({ dateFormat: "dd/mm/yy" });
+            });
+        </script>
+    </div>
+    @* Add Car Button *@
+    <div style="margin-top:15px">
+        <button class="btn btn-info">Add Employee</button>
+    </div>
+</form>

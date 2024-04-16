@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+@using STORE_APP.Models.Entity
+<h2><strong>About</strong></h2>
+
+@* ActionResult  Controller  *@
+@*@using (Html.BeginForm("Index", "Employees_", FormMethod.Get))
+    {
+        <div style="margin-top;15px; margin-bottom:15px;">
+            <b>Aranacak İSMİ girin: &nbsp</b>@Html.TextBox("p")
+            <input type="submit" value="Ara"
+        </div>
+    }*@
+<table class="table table-bordered">
+    <tr>
+        @* Create Table *@
+        <th>About Id</th>
+        <th>Definition</th>
+        <th>Delete</th>
+        <th>Update</th>
+    </tr>
+    @* Get Date *@
+    @foreach (var about in Model)
+    {
+        <tr>
+            @* Get Date For Table *@
+            <td>@about.ID</td>
+            <td>@about.Defination</td>
+            <td>@Html.ActionLink("Delete", "Delete_About", new { id = about.ID }, new { @class = "btn btn-danger", onclick = "return confirm('Do you want delete this department?')" })</td>
+            <td><a href="/About_/Update_About_View/@about.ID" class="btn btn-success">Update</a></td>
+        </tr>
+    }
+</table>
+<a href="/About_/Add_About" class="btn btn-primary">Add New About</a>

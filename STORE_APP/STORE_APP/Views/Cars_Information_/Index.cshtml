@@ -1,0 +1,46 @@
+﻿@using STORE_APP.Models.Entity;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2><strong>Car Information</strong></h2>
+@using (Html.BeginForm("Index", "Cars_Information_", FormMethod.Get))
+{
+    <div style="margin-top;15px; margin-bottom:15px;">
+        <b>Number Plate: &nbsp</b>@Html.TextBox("p")
+        <input type="submit" value="Search"
+    </div>
+
+}
+<div style="margin-top;15px; margin-bottom:15px;">
+    <table class="table table-bordered">
+        <div style="margin-top;15px; margin-bottom:15px;">
+        <tr>
+            @* Create Table *@
+            <th>CAR SHASIS CODE</th>
+            <th>Car Number Plate</th>
+            <th>Information</th>
+            <th>Last Maıntance Date</th>
+            <th>Next Maıntance Date</th>
+            <th>C_Date</th>
+            <th>U_Date</th>
+            <th>Update</th>
+        </tr>
+        @* Get Date *@
+        @foreach (var car in Model)
+        {
+            <tr>
+                @* Get Date For Table *@
+                <td>@car.CAR_SHASSIS_CODE</td>
+                <td>@car.CAR_NUMBER_PLATE</td>
+                <td>@car.INFORMATION</td>
+                <td>@Convert.ToDateTime(car.LAST_MAINTANCE_DATE).ToString("dd/MM/yyyy")</td>
+                <td>@Convert.ToDateTime(car.NEXT_MAINTANCE_DATE).ToString("dd/MM/yyyy")</td>
+                <td>@Convert.ToDateTime(car.C_DATE).ToString("dd/MM/yyyy")</td>
+                <td>@Convert.ToDateTime(car.U_DATE).ToString("dd/MM/yyyy")</td>
+                <td><a href="/Cars_Information_/Update_Car_Information_View/@car.CAR_NUMBER_PLATE" class="btn btn-success">Update</a></td>
+            </tr>
+        }
+    </table>
+    <a href="/Cars_Information_/Add_Car_Information/" class="btn btn-primary">Add New Car Information</a>

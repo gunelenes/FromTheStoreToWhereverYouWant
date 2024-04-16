@@ -1,0 +1,37 @@
+﻿@using STORE_APP.Models.Entity;
+    
+    @{
+        ViewBag.Title = "Index";
+        Layout = "~/Views/Shared/Layout.cshtml";
+    }
+
+    <h2><strong>Departments</strong></h2>
+
+    <table class="table table-bordered">
+        <tr>
+            @* Create Table *@
+            <th>Department Id</th>
+            <th>Department Name</th>
+            <th>Category Activity</th>
+            <th>C_DATE</th>
+            <th>U_DATE</th>
+            <th>Delete</th>
+            <th>Update</th>
+        </tr>
+        @* Get Date *@
+        @foreach (var ctg in Model)
+        {
+            <tr>
+                @* Get Date For Table *@
+                <td>@ctg.DEPARTMENT_ID</td>
+                <td>@ctg.DEPARTMENT_NAME</td>
+                <td>@ctg.IS_ACTIV</td>
+                <td>@Convert.ToDateTime(ctg.C_DATE).ToString("dd/MM/yyyy")</td>
+                <td>@Convert.ToDateTime(ctg.U_DATE).ToString("dd/MM/yyyy")</td>
+                <td>@Html.ActionLink("Delete", "Delete_Department", new { id = ctg.DEPARTMENT_ID }, new { @class = "btn btn-danger", onclick = "return confirm('Do you want delete this department?')" })</td>
+                @*<td><a href="/Departments_/Delete_Department/@ctg.DEPARTMENT_ID" class="btn btn-danger">Delete</a></td>*@
+                <td><a href="/Departments_/Update_Department_View/@ctg.DEPARTMENT_ID" class="btn btn-success">Update</a></td>
+            </tr>
+        }
+    </table>
+    <a href="/Departments_/Add_Departments" class="btn btn-primary">Add New Department</a>

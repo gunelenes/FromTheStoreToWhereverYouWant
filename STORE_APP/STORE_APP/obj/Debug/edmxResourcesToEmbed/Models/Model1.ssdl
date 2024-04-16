@@ -1,0 +1,239 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DB_STORE_APPModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="APPOINTMENT">
+    <Key>
+      <PropertyRef Name="APPOINTMENT_ID" />
+    </Key>
+    <Property Name="APPOINTMENT_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CUSTOMER_ID" Type="int" />
+    <Property Name="ROTATION" Type="varchar" MaxLength="200" />
+    <Property Name="DATE" Type="date" />
+    <Property Name="CLOCK" Type="varchar" MaxLength="6" />
+    <Property Name="CAR_CATEGORY_ID" Type="int" />
+    <Property Name="IS_ACTIV" Type="int" />
+    <Property Name="C_DATE" Type="date" />
+    <Property Name="U_DATE" Type="date" />
+  </EntityType>
+  <EntityType Name="CARS">
+    <Key>
+      <PropertyRef Name="CAR_ID" />
+    </Key>
+    <Property Name="CAR_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CAR_CATEGORY_ID" Type="int" />
+    <Property Name="CAR_SHASSIS_CODE" Type="int" />
+    <Property Name="CAR_NUMBER_PLATE" Type="varchar" MaxLength="50" />
+    <Property Name="IS_ACTIV" Type="int" />
+    <Property Name="C_DATE" Type="date" />
+    <Property Name="U_DATE" Type="date" />
+  </EntityType>
+  <EntityType Name="CARS_CATEGORY">
+    <Key>
+      <PropertyRef Name="CAR_CATEGORY_ID" />
+    </Key>
+    <Property Name="CAR_CATEGORY_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CAR_CATEGORY_NAME" Type="varchar" MaxLength="50" />
+    <Property Name="IS_ACTIV" Type="int" />
+    <Property Name="C_DATE" Type="date" />
+    <Property Name="U_DATE" Type="date" />
+  </EntityType>
+  <EntityType Name="CARS_INFORMATION">
+    <Key>
+      <PropertyRef Name="CAR_SHASSIS_CODE" />
+    </Key>
+    <Property Name="CAR_SHASSIS_CODE" Type="int" Nullable="false" />
+    <Property Name="CAR_NUMBER_PLATE" Type="varbinary" MaxLength="50" />
+    <Property Name="INFORMATION" Type="varchar" MaxLength="500" />
+    <Property Name="LAST_MAINTANCE_DATE" Type="date" />
+    <Property Name="NEXT_MAINTANCE_DATE" Type="date" />
+    <Property Name="IS_ACTIV" Type="int" />
+    <Property Name="C_DATE" Type="date" />
+    <Property Name="U_DATE" Type="date" />
+  </EntityType>
+  <EntityType Name="CUSTOMERS">
+    <Key>
+      <PropertyRef Name="CUSTOMER_ID" />
+    </Key>
+    <Property Name="CUSTOMER_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NAME" Type="varchar" MaxLength="50" />
+    <Property Name="SURNAME" Type="varchar" MaxLength="50" />
+    <Property Name="PHONE" Type="varchar" MaxLength="50" />
+    <Property Name="EMAIL" Type="varchar" MaxLength="50" />
+    <Property Name="COMPANY_NAME" Type="varchar" MaxLength="50" />
+    <Property Name="IS_ACTIV" Type="int" />
+    <Property Name="C_DATE" Type="date" />
+    <Property Name="U_DATE" Type="date" />
+  </EntityType>
+  <EntityType Name="DEPARTMENTS">
+    <Key>
+      <PropertyRef Name="DEPARTMENT_ID" />
+    </Key>
+    <Property Name="DEPARTMENT_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DEPARTMENT_NAME" Type="varchar" MaxLength="50" />
+    <Property Name="IS_ACTIV" Type="int" />
+    <Property Name="C_DATE" Type="date" />
+    <Property Name="U_DATE" Type="date" />
+  </EntityType>
+  <EntityType Name="EMPLOYEES">
+    <Key>
+      <PropertyRef Name="EMPLOYEE_ID" />
+    </Key>
+    <Property Name="EMPLOYEE_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DEPARTMENT_ID" Type="int" />
+    <Property Name="NAME" Type="varchar" MaxLength="50" />
+    <Property Name="SURNAME" Type="varchar" MaxLength="50" />
+    <Property Name="BİRT_DATE" Type="date" />
+    <Property Name="IDENTIFY_NUMBER" Type="int" />
+    <Property Name="EMPLOYEE_POINT" Type="int" />
+    <Property Name="TOTAL_SEVICE" Type="int" />
+    <Property Name="IS_ACTIV" Type="int" />
+    <Property Name="C_DATE" Type="date" />
+    <Property Name="U_DATE" Type="date" />
+  </EntityType>
+  <EntityType Name="SALES_HISTORY">
+    <Key>
+      <PropertyRef Name="SALES_ID" />
+    </Key>
+    <Property Name="SALES_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CUSTOMER_ID" Type="int" />
+    <Property Name="CAR_ID" Type="int" />
+    <Property Name="EMPLOYEE_ID" Type="int" />
+    <Property Name="EMPLOYEE_POINT" Type="int" />
+    <Property Name="ROTATION" Type="varchar" MaxLength="500" />
+    <Property Name="IS_ACTIV" Type="int" />
+    <Property Name="C_DATE" Type="date" />
+    <Property Name="U_DATE" Type="date" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <Association Name="FK_APPOINTMENT_CARS_CATEGORY">
+    <End Role="CARS_CATEGORY" Type="Self.CARS_CATEGORY" Multiplicity="0..1" />
+    <End Role="APPOINTMENT" Type="Self.APPOINTMENT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CARS_CATEGORY">
+        <PropertyRef Name="CAR_CATEGORY_ID" />
+      </Principal>
+      <Dependent Role="APPOINTMENT">
+        <PropertyRef Name="CAR_CATEGORY_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_APPOINTMENT_CUSTOMERS">
+    <End Role="CUSTOMERS" Type="Self.CUSTOMERS" Multiplicity="0..1" />
+    <End Role="APPOINTMENT" Type="Self.APPOINTMENT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CUSTOMERS">
+        <PropertyRef Name="CUSTOMER_ID" />
+      </Principal>
+      <Dependent Role="APPOINTMENT">
+        <PropertyRef Name="CUSTOMER_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CARS_CARS_CATEGORY">
+    <End Role="CARS_CATEGORY" Type="Self.CARS_CATEGORY" Multiplicity="0..1" />
+    <End Role="CARS" Type="Self.CARS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CARS_CATEGORY">
+        <PropertyRef Name="CAR_CATEGORY_ID" />
+      </Principal>
+      <Dependent Role="CARS">
+        <PropertyRef Name="CAR_CATEGORY_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EMPLOYEES_DEPARTMENTS">
+    <End Role="DEPARTMENTS" Type="Self.DEPARTMENTS" Multiplicity="0..1" />
+    <End Role="EMPLOYEES" Type="Self.EMPLOYEES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DEPARTMENTS">
+        <PropertyRef Name="DEPARTMENT_ID" />
+      </Principal>
+      <Dependent Role="EMPLOYEES">
+        <PropertyRef Name="DEPARTMENT_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SALES_HISTORY_CARS">
+    <End Role="CARS" Type="Self.CARS" Multiplicity="0..1" />
+    <End Role="SALES_HISTORY" Type="Self.SALES_HISTORY" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CARS">
+        <PropertyRef Name="CAR_ID" />
+      </Principal>
+      <Dependent Role="SALES_HISTORY">
+        <PropertyRef Name="CAR_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SALES_HISTORY_CUSTOMERS">
+    <End Role="CUSTOMERS" Type="Self.CUSTOMERS" Multiplicity="0..1" />
+    <End Role="SALES_HISTORY" Type="Self.SALES_HISTORY" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CUSTOMERS">
+        <PropertyRef Name="CUSTOMER_ID" />
+      </Principal>
+      <Dependent Role="SALES_HISTORY">
+        <PropertyRef Name="CUSTOMER_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SALES_HISTORY_EMPLOYEES">
+    <End Role="EMPLOYEES" Type="Self.EMPLOYEES" Multiplicity="0..1" />
+    <End Role="SALES_HISTORY" Type="Self.SALES_HISTORY" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EMPLOYEES">
+        <PropertyRef Name="EMPLOYEE_ID" />
+      </Principal>
+      <Dependent Role="SALES_HISTORY">
+        <PropertyRef Name="EMPLOYEE_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DB_STORE_APPModelStoreContainer">
+    <EntitySet Name="APPOINTMENT" EntityType="Self.APPOINTMENT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CARS" EntityType="Self.CARS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CARS_CATEGORY" EntityType="Self.CARS_CATEGORY" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CARS_INFORMATION" EntityType="Self.CARS_INFORMATION" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CUSTOMERS" EntityType="Self.CUSTOMERS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DEPARTMENTS" EntityType="Self.DEPARTMENTS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EMPLOYEES" EntityType="Self.EMPLOYEES" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SALES_HISTORY" EntityType="Self.SALES_HISTORY" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_APPOINTMENT_CARS_CATEGORY" Association="Self.FK_APPOINTMENT_CARS_CATEGORY">
+      <End Role="CARS_CATEGORY" EntitySet="CARS_CATEGORY" />
+      <End Role="APPOINTMENT" EntitySet="APPOINTMENT" />
+    </AssociationSet>
+    <AssociationSet Name="FK_APPOINTMENT_CUSTOMERS" Association="Self.FK_APPOINTMENT_CUSTOMERS">
+      <End Role="CUSTOMERS" EntitySet="CUSTOMERS" />
+      <End Role="APPOINTMENT" EntitySet="APPOINTMENT" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CARS_CARS_CATEGORY" Association="Self.FK_CARS_CARS_CATEGORY">
+      <End Role="CARS_CATEGORY" EntitySet="CARS_CATEGORY" />
+      <End Role="CARS" EntitySet="CARS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EMPLOYEES_DEPARTMENTS" Association="Self.FK_EMPLOYEES_DEPARTMENTS">
+      <End Role="DEPARTMENTS" EntitySet="DEPARTMENTS" />
+      <End Role="EMPLOYEES" EntitySet="EMPLOYEES" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SALES_HISTORY_CARS" Association="Self.FK_SALES_HISTORY_CARS">
+      <End Role="CARS" EntitySet="CARS" />
+      <End Role="SALES_HISTORY" EntitySet="SALES_HISTORY" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SALES_HISTORY_CUSTOMERS" Association="Self.FK_SALES_HISTORY_CUSTOMERS">
+      <End Role="CUSTOMERS" EntitySet="CUSTOMERS" />
+      <End Role="SALES_HISTORY" EntitySet="SALES_HISTORY" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SALES_HISTORY_EMPLOYEES" Association="Self.FK_SALES_HISTORY_EMPLOYEES">
+      <End Role="EMPLOYEES" EntitySet="EMPLOYEES" />
+      <End Role="SALES_HISTORY" EntitySet="SALES_HISTORY" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

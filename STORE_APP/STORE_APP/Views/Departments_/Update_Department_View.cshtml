@@ -1,0 +1,47 @@
+﻿@model STORE_APP.Models.Entity.DEPARTMENTS
+@{
+    ViewBag.Title = "Update_Department_View";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+@*                      ActionResult         Controller *@
+@using (Html.BeginForm("Update_Department", "Departments_", FormMethod.Post))
+{
+    <div style="margin-bottom:15px"></div>
+    <div class="form-group">
+        <!-- jQuery -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+        <!-- jQuery UI (Including datepicker) -->
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+        @Html.LabelFor(k => k.DEPARTMENT_ID)
+        @Html.TextBoxFor(k => k.DEPARTMENT_ID, new { @class = "form-control" })
+        <br />
+        @Html.LabelFor(k => k.DEPARTMENT_NAME)
+        @Html.TextBoxFor(k => k.DEPARTMENT_NAME, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.DEPARTMENT_NAME, "", new { @style = "color:red" })
+        <br />
+        <div>
+            <datalist id="Activity">
+                <option value="1">
+                <option value="0">
+            </datalist>
+            <label>Activity</label>
+            <input type="text" class="form-control" name="IS_ACTIV"
+                   list="Activity" />
+            @Html.ValidationMessageFor(x => x.IS_ACTIV, "", new { @style = "color:red" })
+        </div>
+        <div style="margin-top:15px">
+            <label>DATE</label>
+            <input type="text" id="datepicker" class="form-control" name="U_DATE"
+                   value="@DateTime.Now.ToShortDateString()" />
+            <script>
+                $(function () {
+                    $("#datepicker").datepicker({ dateFormat: "dd/mm/yy" });
+                });
+            </script>
+        </div>
+    </div>
+    <div><button class="btn btn-warning">Update</button></div>
+}

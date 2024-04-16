@@ -1,0 +1,81 @@
+﻿
+@{
+    ViewBag.Title = "Layout";
+}
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<!DOCTYPE html>
+
+<html>
+<head>
+    /*
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/front-awesome/d.7.0/css/front-awesome.min.css">
+    <style>
+
+        body {
+            font-family: "Lato", sans-serif;
+        }
+
+        .sidebar {
+            height: 100%;
+            width: 200px;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #111;
+            overflow-x: hidden;
+            padding-top: 16px;
+        }
+
+            .sidebar a {
+                padding: 10px 14px 10px 10px;
+                text-decoration: none;
+                font-size: 14px;
+                color: white;
+                display: block;
+            }
+
+                .sidebar a:hover {
+                    color: blue;
+                }
+
+        .main {
+            margin-left: 200px; /* Same as the width of the sidenav*/
+            padding: 0px 10px;
+        }
+
+        @@media screen and (max-height: 450px) {
+            .sidebar {
+                padding-top: 15px;
+            }
+
+                .sidebar a {
+                    font-size: 18px;
+                }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="sidebar">
+        <a href="/Cars_Category_/Index"><i class="glyphicon glyphicon-list"></i>&nbsp;Car Category</a>
+        <a href="/Departments_/Index"><i class="glyphicon glyphicon-tags"></i>&nbsp; Department</a>
+        <a href="/Cars_/Index"><i class="glyphicon glyphicon-flag"></i>&nbsp; Car</a>
+        <a href="/Cars_Information_/Index"><i class="glyphicon glyphicon-floppy-saved"></i>&nbsp; Car Information</a>
+        <a href="/Employees_/Index"><i class="glyphicon glyphicon-tree-deciduous"></i>&nbsp; Employee</a>
+        <a href="/Customers_/Index"><i class="glyphicon glyphicon-user"></i>&nbsp; Customers</a>
+        <a href="/Appointment_/Index"><i class="glyphicon glyphicon-road"></i>&nbsp; Appointment</a>
+        <a href="/About_/Index"><i class="glyphicon glyphicon-text-size"></i>&nbsp; About</a>
+        <a href="/Sales_History_/Index"><i class="glyphicon glyphicon-floppy-disk"></i>&nbsp; Sales History</a>
+        <a href="/Cars_Information_/MaintenanceDueCars"><i class="glyphicon glyphicon-wrench"></i>&nbsp; Vehicles Malfunctions</a>
+        <a href="/Cars_Information_/Max_Use_Car"><i class="glyphicon glyphicon-remove-sign"></i>&nbsp;Max Use Car</a>
+        <a href="/Login/Index"><i class="glyphicon glyphicon-remove-sign"></i>&nbsp; Çıkış</a>
+    </div>
+
+    <div class="main">@RenderBody()</div>
+</body>
+</html>
